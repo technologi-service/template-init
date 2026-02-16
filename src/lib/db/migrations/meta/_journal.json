@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1771241023435,
+      "tag": "0000_woozy_chimera",
+      "breakpoints": true
+    }
+  ]
+}

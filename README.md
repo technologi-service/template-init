@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fullstack Recipes App
+
+This is a **Next.js 16+** application bootstrapped with `create-next-app` and configured according to [fullstackrecipes.com](https://fullstackrecipes.com) best practices.
+
+## Features
+
+- **Framework**: [Next.js 16+](https://nextjs.org) (App Router, Turbopack)
+- **Language**: [TypeScript](https://www.typescriptlang.org) (Strict)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com) + [Shadcn UI](https://ui.shadcn.com)
+- **Database**: [Neon Postgres](https://neon.tech) + [Drizzle ORM](https://orm.drizzle.team)
+- **Auth**: [Better-Auth](https://better-auth.com) (Email/Password)
+- **Email**: [Resend](https://resend.com) + [React Email](https://react.email)
+- **Runtime**: [Bun](https://bun.sh)
 
 ## Getting Started
 
-First, run the development server:
+1. **Install Dependencies**:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   bun install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Configure Environment**:
+   Copy `.env.example` to `.env` and fill in your credentials:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   cp .env.example .env
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   - `DATABASE_URL`: From your Neon dashboard.
+   - `BETTER_AUTH_SECRET`: Generated securely.
+   - `RESEND_API_KEY`: From your Resend dashboard.
 
-## Learn More
+3. **Database Migration**:
+   Running migrations locally requires the `DATABASE_URL` to be present in `.env`.
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   bun run db:migrate
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Start Development Server**:
+   ```bash
+   bun dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Development Scripts
 
-## Deploy on Vercel
+- `bun dev`: Start dev server with Turbopack.
+- `bun run build`: Production build.
+- `bun run start`: Start production server.
+- `bun run lint`: Run ESLint.
+- `bun run typecheck`: Run TypeScript check.
+- `bun run fmt`: Format code with Prettier.
+- `bun run env:validate`: Check environment variables.
+- `bun run db:generate`: Generate Drizzle migrations from schema.
+- `bun run db:migrate`: Apply migrations to database.
+- `bun run db:studio`: Open Drizzle Studio.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pushed to GitHub? Link to [Vercel](https://vercel.com) for automatic deployments.
+Set usage of Bun in Vercel settings (Build Command: `bun run build`, Install Command: `bun install`).
