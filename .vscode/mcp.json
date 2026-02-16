@@ -1,0 +1,20 @@
+{
+  "servers": {
+    "fullstackrecipes": {
+      "type": "http",
+      "url": "https://fullstackrecipes.com/api/mcp"
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com"
+    },
+    "next-devtools": {
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@latest"]
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    }
+  }
+}
