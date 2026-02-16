@@ -60,3 +60,33 @@ This is a **Next.js 16+** application bootstrapped with `create-next-app` and co
 
 Pushed to GitHub? Link to [Vercel](https://vercel.com) for automatic deployments.
 Set usage of Bun in Vercel settings (Build Command: `bun run build`, Install Command: `bun install`).
+
+## 🤖 Operaciones con Agentes (MCP)
+
+Si estás utilizando un Agente de IA (como Windsurf, Cursor, o este mismo chat), puedes automatizar la infraestructura usando los siguientes servidores MCP:
+
+### 1. Base de Datos (Neon MCP)
+
+Usa el servidor `@neondatabase/mcp-server-neon` para provisionar la DB sin salir del chat:
+
+1.  **Crear Proyecto**: Pide al agente `create_project(name: "mi-app-fullstack")`.
+2.  **Obtener Credenciales**: Usa `get_connection_string(project_id: "...")`.
+3.  **Configurar**: El agente debe actualizar la variable `DATABASE_URL` en tu archivo `.env`.
+
+### 2. Gestión de Código (GitKraken/GitHub MCP)
+
+Usa el servidor de GitKraken para gestionar el versionado:
+
+1.  **Commit**: Usa `git_add_or_commit` para guardar tus cambios.
+2.  **Push**: Usa `git_push` para subir al remoto (asegúrate de haber añadido el `remote` previamente con `git remote add origin ...`).
+
+### 3. Despliegue (Vercel MCP)
+
+Usa el servidor de Vercel para el despliegue final:
+
+1.  **Vincular**: Pide al agente que investigue tus proyectos o cree uno nuevo.
+2.  **Variables de Entorno**: Es CRUCIAL que pidas al agente sincronizar las variables:
+    - `DATABASE_URL`
+    - `BETTER_AUTH_SECRET`
+    - `RESEND_API_KEY`
+3.  **Deploy**: Usa la herramienta de despliegue o `vercel deploy` para publicar.
