@@ -57,10 +57,7 @@ async function main() {
   console.log(dim("  Loading environment files..."));
 
   const loadedEnvFiles: string[] = [];
-  const { combinedEnv, loadedEnvFiles: files } = loadEnvConfig(
-    projectDir,
-    isDev,
-  );
+  const { loadedEnvFiles: files } = loadEnvConfig(projectDir, isDev);
 
   for (const file of files) {
     loadedEnvFiles.push(file.path);

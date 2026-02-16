@@ -5,7 +5,7 @@ const prefix: string = "Assertion failed";
  * Throws if condition is falsy. Message can be string or lazy function.
  */
 export default function assert(
-  condition: any,
+  condition: unknown,
   message?: string | (() => string),
 ): asserts condition {
   if (condition) {
