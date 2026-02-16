@@ -15,9 +15,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.BETTER_AUTH_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "Template Init",
-  description: "AI-Native Fullstack Starter",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "Template Init",
+    template: "%s | Template Init",
+  },
+  description: "AI-Native Fullstack Starter - Production Ready",
+  openGraph: {
+    title: "Template Init",
+    description: "AI-Native Fullstack Starter",
+    url: baseUrl,
+    siteName: "Template Init",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Template Init",
+    description: "AI-Native Fullstack Starter",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
