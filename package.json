@@ -16,7 +16,8 @@
     "db:generate:auth": "bun run src/scripts/generate-schema.ts",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "deploy:init": "vercel link && vercel env pull .env.development"
+    "deploy:init": "vercel link && vercel env pull .env.development",
+    "user-stories:verify": "bun run scripts/verify-user-stories.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",

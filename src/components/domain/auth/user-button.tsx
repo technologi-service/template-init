@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession, signOut } from "@/lib/auth/client";
+import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,11 +13,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Loader2, LogOut, User } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export function UserButton() {
-  const { data: session, isPending } = useSession();
-  const router = useRouter();
+  const { session, isPending, signOut } = useAuth();
 
   if (isPending) {
     return (
@@ -43,7 +41,7 @@ export function UserButton() {
   const userInitials = session.user.name
     ? session.user.name
         .split(" ")
-        .map((n) => n[0])
+        .map((n: string) => n[0])
         .join("")
         .toUpperCase()
         .slice(0, 2)
@@ -83,15 +81,7 @@ export function UserButton() {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="cursor-pointer text-destructive focus:text-destructive"
-          onClick={async () => {
-            await signOut({
-              fetchOptions: {
-                onSuccess: () => {
-                  router.push("/");
-                },
-              },
-            });
-          }}
+          onClick={() => signOut()}
         >
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>

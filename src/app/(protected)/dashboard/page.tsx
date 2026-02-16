@@ -11,9 +11,7 @@ export default async function DashboardPage() {
     redirect("/sign-in");
   }
 
-  return (
-    <div className="flex items-center">
-      <h1 className="text-lg font-semibold md:text-2xl">Dashboard</h1>
-    </div>
-  );
+  // Robust redirection to role-specific dashboard
+  const userRole = (session.user as { role?: string }).role || "user";
+  redirect(`/dashboard/${userRole}`);
 }

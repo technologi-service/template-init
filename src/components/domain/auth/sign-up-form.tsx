@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
@@ -26,6 +26,7 @@ const signUpSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
+  role: z.string().optional(),
 });
 
 type SignUpValues = z.infer<typeof signUpSchema>;
@@ -33,6 +34,8 @@ type SignUpValues = z.infer<typeof signUpSchema>;
 export function SignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const roleFromUrl = searchParams.get("role") || "user";
 
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
@@ -40,6 +43,7 @@ export function SignUpForm() {
       name: "",
       email: "",
       password: "",
+      role: roleFromUrl,
     },
   });
 
@@ -50,7 +54,9 @@ export function SignUpForm() {
         name: values.name,
         email: values.email,
         password: values.password,
-        callbackURL: "/", // Redirect after successful signup
+        // @ts-expect-error - role is added dynamically via additionalFields in server config
+        role: values.role || roleFromUrl,
+        callbackURL: "/",
       });
 
       if (error) {
@@ -60,7 +66,7 @@ export function SignUpForm() {
 
       toast.success("Account created! Please check your email to verify.");
       router.push("/sign-in");
-    } catch (err) {
+    } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);

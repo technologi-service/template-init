@@ -1,0 +1,22 @@
+[
+  {
+    "description": "Redirección automática del Home al Dashboard para usuarios autenticados",
+    "steps": [
+      "Estar autenticado en la aplicación",
+      "Navegar a la ruta raíz /",
+      "Verificar que el sistema redirige automáticamente a /dashboard",
+      "Confirmar que el usuario visualiza el contenido del Dashboard"
+    ],
+    "passes": true
+  },
+  {
+    "description": "Acceso al Home para usuarios no autenticados",
+    "steps": [
+      "Cerrar sesión o no tener sesión activa",
+      "Navegar a la ruta raíz /",
+      "Verificar que la página se carga correctamente sin redireccionar",
+      "Confirmar que el usuario visualiza la Landing Page / Home"
+    ],
+    "passes": true
+  }
+]

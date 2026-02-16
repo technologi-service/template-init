@@ -8,6 +8,13 @@
       "when": 1771241023435,
       "tag": "0000_woozy_chimera",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1771254374973,
+      "tag": "0001_abnormal_miss_america",
+      "breakpoints": true
     }
   ]
 }

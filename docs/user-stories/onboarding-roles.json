@@ -1,0 +1,38 @@
+[
+  {
+    "description": "Flujo de registro para un Cliente desde la Landing Page",
+    "steps": [
+      "Navegar a la página principal /",
+      "Hacer clic en el botón 'Soy Cliente'",
+      "Verificar que la URL cambia a /sign-up?role=user",
+      "Completar el formulario de registro",
+      "Verificar que el usuario se crea con el rol 'user'",
+      "Al iniciar sesión, verificar redirección a /dashboard/user"
+    ],
+    "passes": false
+  },
+  {
+    "description": "Flujo de registro para una Cocina desde la Landing Page",
+    "steps": [
+      "Navegar a la página principal /",
+      "Hacer clic en el botón 'Tengo un Negocio'",
+      "Verificar que la URL cambia a /sign-up?role=kitchen",
+      "Completar el formulario de registro",
+      "Verificar que el usuario se crea con el rol 'kitchen'",
+      "Al iniciar sesión, verificar redirección a /dashboard/kitchen"
+    ],
+    "passes": false
+  },
+  {
+    "description": "Flujo de registro para un Repartidor desde la Landing Page",
+    "steps": [
+      "Navegar a la página principal /",
+      "Hacer clic en el botón 'Quiero Repartir'",
+      "Verificar que la URL cambia a /sign-up?role=delivery",
+      "Completar el formulario de registro",
+      "Verificar que el usuario se crea con el rol 'delivery'",
+      "Al iniciar sesión, verificar redirección a /dashboard/delivery"
+    ],
+    "passes": false
+  }
+]
