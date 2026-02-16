@@ -41,6 +41,7 @@ export function ForgotPasswordForm() {
   async function onSubmit(values: ForgotPasswordValues) {
     setIsLoading(true);
     try {
+      // @ts-expect-error - better-auth type inference issue, method exists at runtime
       const { error } = await authClient.forgetPassword({
         email: values.email,
         redirectTo: "/reset-password", // Page where user lands after clicking email link
